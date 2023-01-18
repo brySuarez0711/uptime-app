@@ -29,6 +29,15 @@ class Endpoint extends Model
         'frequency' => EndpointFrequency::class
     ];
 
+    public function uptimePercentage()
+    {
+        if (!$this->checks->count()) {
+            return null;
+        }
+
+        return round(($this->successful_checks_count / $this->checks->count()) * 100, 2);
+    }
+
     public function site()
     {
         return $this->belongsTo(Site::class);
