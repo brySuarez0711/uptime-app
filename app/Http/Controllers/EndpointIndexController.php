@@ -18,6 +18,7 @@ class EndpointIndexController extends Controller
     {
 
         // authorize
+        $this->authorize('show', $endpoint);
 
         // eager loading
 
