@@ -8,6 +8,5 @@ class EloquenEndpointRepository implements EndpointRepository
 {
     public function all()
     {
-        //
     }
 }

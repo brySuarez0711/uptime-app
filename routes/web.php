@@ -5,6 +5,7 @@ use App\Http\Controllers\EndpointDestroyController;
 use App\Http\Controllers\EndpointStoreController;
 use App\Http\Controllers\EndpointUpdateController;
 use App\Http\Controllers\SitesController;
+use App\Http\Controllers\TopicsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,4 +40,7 @@ Route::middleware([
     Route::post('/sites/{site}/endpoints', EndpointStoreController::class);
     Route::delete('/endpoints/{endpoint}', EndpointDestroyController::class);
     Route::patch('/endpoints/{endpoint}', EndpointUpdateController::class);
+
+    //Topics
+    Route::get('/topics', [TopicsController::class, 'index'])->name('topics.index');
 });

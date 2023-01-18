@@ -10,6 +10,12 @@ use Inertia\Inertia;
 
 class DashboardController extends Controller
 {
+    protected $endpoints;
+
+    public function __construct()
+    {
+        //
+    }
     public function __invoke(Request $request, Site $site)
     {
 
