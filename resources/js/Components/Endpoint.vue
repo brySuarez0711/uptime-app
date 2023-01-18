@@ -2,7 +2,7 @@
 import { Inertia } from "@inertiajs/inertia";
 import TextInput from "@/Components/TextInput.vue";
 import InputLabel from "@/Components/InputLabel.vue";
-import { usePage, useForm } from "@inertiajs/inertia-vue3";
+import { usePage, useForm, Link } from "@inertiajs/inertia-vue3";
 import { ref, watch } from "vue";
 import debounce from "lodash.debounce";
 
@@ -55,9 +55,12 @@ const deleteEndpoint = () => {
                 />
             </template>
             <template v-else>
-                <a href="#">
+                <Link
+                    :href="`/endpoints/${endpoint.id}`"
+                    class="text-indigo-600 hover:text-indigo-900"
+                >
                     {{ endpoint.location }}
-                </a>
+                </Link>
             </template>
         </td>
         <td class="whitespace-nowrap px-3 text-sm text-gray-500 w-64">
