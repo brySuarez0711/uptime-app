@@ -4,6 +4,8 @@ namespace App\Http\Middleware;
 
 use App\Enums\EndpointFrequency;
 use App\Http\Resources\EndpointFrequencyResource;
+use App\Http\Resources\SiteResource;
+
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -39,7 +41,8 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            'endpointFrequencies' => EndpointFrequencyResource::collection(EndpointFrequency::cases())
+            'endpointFrequencies' => EndpointFrequencyResource::collection(EndpointFrequency::cases()),
+            'sites' => $request->user() ?  SiteResource::collection($request->user()->sites()->latest()->get()) : null,
         ]);
     }
 }
