@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EndpointDestroyController;
+use App\Http\Controllers\EndpointIndexController;
 use App\Http\Controllers\EndpointStoreController;
 use App\Http\Controllers\EndpointUpdateController;
 use App\Http\Controllers\SitesController;
@@ -37,6 +38,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/dashboard/{site?}', DashboardController::class)->name('dashboard');
     Route::post('/sites', SitesController::class);
+    Route::get('/endpoints/{endpoint}', EndpointIndexController::class);
     Route::post('/sites/{site}/endpoints', EndpointStoreController::class);
     Route::delete('/endpoints/{endpoint}', EndpointDestroyController::class);
     Route::patch('/endpoints/{endpoint}', EndpointUpdateController::class);
